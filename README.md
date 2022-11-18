@@ -23,7 +23,7 @@ npm start
 
 ## Database setup
 
-1. Create database using the /databasesDumps/SocialFeaturesver1.0%20b1.sql file in database Dump folder.
+1. Create database using the [SocialFeaturesver1.0%20b1.sql](/databasesDumps/SocialFeaturesver1.0%20b1.sql) file in database Dump folder.
 2. Configure application by updating /services/mysql.service.js as following:
 
 <br>
