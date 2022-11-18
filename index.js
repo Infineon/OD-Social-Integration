@@ -8,9 +8,9 @@ const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
 //const swaggerSpec = swaggerJSDoc(options);
 const usersRouter = require('./users/routes.config');
-// const masterRouter = require('./master/routes.config');
-//const dashboardRouter = require('./dashboard/routes.config');
-const notificationRouter = require('./notifications/routes.config');
+const pagesRouter = require('./pages/routes.config');
+const messagesRouter = require('./messages/routes.config');
+//const notificationRouter = require('./notifications/routes.config');
 //const communityProperties = require('./sandbox/communityProperties/routes.config')
 /**
  * log4js configuration for storing logs while App is running
@@ -107,11 +107,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
 usersRouter.routesConfig(app);
-// masterRouter.routesConfig(app);
-//dashboardRouter.routesConfig(app);
-notificationRouter.routesConfig(app);
-
-// communityProperties.routesConfig(app)
+pagesRouter.routesConfig(app);
+messagesRouter.routesConfig(app);
 
 app.listen(config.port, function() {
     logger.info('app listening at port ' + config.ipaddress + ':%s', config.port);

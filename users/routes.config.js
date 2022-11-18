@@ -21,7 +21,7 @@ exports.routesConfig = function (userapp) {
         userHandler.getUserMessages
     ]);
 
-    userapp.get('/api/v1/users/Credentials', authService.authUser, [
+    userapp.get('/api/v1/users/credentials', authService.authUser, [
         userHandler.getUserCredentials
     ]);
 

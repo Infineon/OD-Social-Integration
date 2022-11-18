@@ -17,11 +17,11 @@ const userService = require('./user.controller');
  * @return {Returns User data or Failed }
  */
  exports.listUsers = (req, res) => {
-        res.status(200).send({
+        res.status(501).send({
             status: true,
             message: 'Not implemented',
-            code: 200,
-            data: user
+            code: 501,
+            data: null
         })
     }
 
@@ -34,11 +34,11 @@ const userService = require('./user.controller');
  * @return {Returns User data or Failed }
  */
  exports.createUser = (req, res) => {
-    res.status(200).send({
+    res.status(501).send({
         status: true,
         message: 'Not implemented',
-        code: 200,
-        data: user
+        code: 501,
+        data: null
     })
 }
 
@@ -49,12 +49,12 @@ const userService = require('./user.controller');
  * @param {any} res 
  * @return {Returns User data or Failed }
  */
- exports.createUser = (req, res) => {
-    res.status(200).send({
+ exports.updateUser = (req, res) => {
+    res.status(501).send({
         status: true,
         message: 'Not implemented',
-        code: 200,
-        data: user
+        code: 501,
+        data: null
     })
 }
 
@@ -67,29 +67,14 @@ const userService = require('./user.controller');
  * @return {Returns User data or Failed }
  */
  exports.deleteUser = (req, res) => {
-    res.status(200).send({
+    res.status(501).send({
         status: true,
         message: 'Not implemented',
-        code: 200,
-        data: user
+        code: 501,
+        data: null
     })
 }
 
-/**
- * @name {deleteUser}
- * @description {This Handler method is used to update the user personal info} 
- * @param {any} req 
- * @param {any} res 
- * @return {Returns User data or Failed }
- */
- exports.deleteUser = (req, res) => {
-    res.status(200).send({
-        status: true,
-        message: 'Not implemented',
-        code: 200,
-        data: user
-    })
-}
 /**
  * @name {getUserMessages}
  * @description {This Handler method is used to update the user personal info} 
@@ -98,11 +83,11 @@ const userService = require('./user.controller');
  * @return {Returns User data or Failed }
  */
  exports.getUserMessages = (req, res) => {
-    res.status(200).send({
+    res.status(501).send({
         status: true,
         message: 'Not implemented',
-        code: 200,
-        data: user
+        code: 501,
+        data: null
     })
 }
 
@@ -114,30 +99,13 @@ const userService = require('./user.controller');
  * @return {Returns User data or Failed }
  */
  exports.getUserCredentials = (req, res) => {
-    res.status(200).send({
+    res.status(501).send({
         status: true,
         message: 'Not implemented',
-        code: 200,
-        data: user
+        code: 501,
+        data: null
     })
 }
-/**
- * @name {getUserMessages}
- * @description {This Handler method is used to update the user personal info} 
- * @param {any} req 
- * @param {any} res 
- * @return {Returns User data or Failed }
- */
- exports.getUserMessages = (req, res) => {
-    res.status(200).send({
-        status: true,
-        message: 'Not implemented',
-        code: 200,
-        data: user
-    })
-}
-
-
 
 /**
  * @name {getRefreshToken}
@@ -149,11 +117,11 @@ const userService = require('./user.controller');
 exports.getRefreshToken = (req, res) => {
     try {
         userService.getRefreshToken(req).then(function(user) {
-            res.status(200).send({
+            res.status(501).send({
                 status: true,
-                message: 'Success',
-                code: 200,
-                data: user
+                message: 'Not implemented',
+                code: 501,
+                data: null
             })
         }).catch(function(err) {
             logger.error("User Handler", err);
