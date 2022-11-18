@@ -18,10 +18,12 @@ npm install
 ```
 npm start
 ```
+6. The aaplication would be available at http://localhost:3601/
+7. Access specific API endpoint such as GET http://localhost:3601/api/v1/pages
 
 ## Database setup
 
-1. Create database using the sql file in database Dump folder.
+1. Create database using the /databasesDumps/SocialFeaturesver1.0%20b1.sql file in database Dump folder.
 2. Configure application by updating /services/mysql.service.js as following:
 
 <br>
