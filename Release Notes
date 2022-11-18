@@ -1,0 +1,10 @@
+Setup:
+   1. Run npm install in the project directory.
+   2. After successfully installing the dependencies , run npm start
+   
+Usage:
+    Open browser to access swagger and enter http://localhost:3600/api-docs/#/ then list of API's will be displayed.
+
+Git Clone Link
+https://github.com/crsunilsada/super-tenant.git
+

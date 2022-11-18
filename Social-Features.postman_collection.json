@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "580f5971-cd68-4f56-8e5a-de044c366c13",
+		"name": "Social-Features",
+		"description": "# Infineone Documentation - Social Features\n\nNodeJS based services enabling Social Features on Documentaion Pages",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20528420"
+	},
+	"item": [
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "Respond Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/messages/response/:ID",
+							"path": [
+								"messages",
+								"response",
+								":ID"
+							],
+							"variable": [
+								{
+									"key": "ID",
+									"value": null
+								}
+							]
+						},
+						"description": "Allows sending responses to Posts."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/messages/",
+							"path": [
+								"messages",
+								""
+							]
+						},
+						"description": "Allows creaion and update of a Post"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete message",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "/messages/message?messageid",
+							"path": [
+								"messages",
+								"message"
+							],
+							"query": [
+								{
+									"key": "messageid",
+									"value": null
+								}
+							]
+						},
+						"description": "Deletes a message\n\nEndFragment"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Message",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "/messages/:id",
+							"path": [
+								"messages",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Message by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/messages/:id",
+							"path": [
+								"messages",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "messages",
+							"host": [
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Messages map online documentation pages with messages created in social sites. This is achieved via interaction with Khoros Posts API."
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "Users",
+							"host": [
+								"Users"
+							]
+						},
+						"description": "Gets a collection of Users"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/users/:id",
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "Updates details for a user"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Users",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "/users/:id",
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						},
+						"description": "Gets a collection of messages for a user"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "User",
+							"host": [
+								"User"
+							]
+						},
+						"description": "Deletes a user."
+					},
+					"response": []
+				},
+				{
+					"name": "User Credentials",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/user/credentials",
+							"path": [
+								"user",
+								"credentials"
+							]
+						},
+						"description": "Gets session details of a logged-on user"
+					},
+					"response": []
+				},
+				{
+					"name": "List User Message",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/users/:id/messages",
+							"path": [
+								"users",
+								":id",
+								"messages"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pages",
+			"item": [
+				{
+					"name": "List Pages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/pages/",
+							"path": [
+								"pages",
+								""
+							]
+						},
+						"description": "Gets collection of pages"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Page",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "/pages/:ID",
+							"path": [
+								"pages",
+								":ID"
+							],
+							"variable": [
+								{
+									"key": "ID",
+									"value": null
+								}
+							]
+						},
+						"description": "Updates a page."
+					},
+					"response": []
+				},
+				{
+					"name": "List Page Messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/pages/:ID/messages",
+							"path": [
+								"pages",
+								":ID",
+								"messages"
+							],
+							"variable": [
+								{
+									"key": "ID",
+									"value": null
+								}
+							]
+						},
+						"description": "Gets collection of messages associated with a page"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Page",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "/pages/?PageID",
+							"path": [
+								"pages",
+								""
+							],
+							"query": [
+								{
+									"key": "PageID",
+									"value": null
+								}
+							]
+						},
+						"description": "Deletes a page"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Page",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "/pages/:ID",
+							"path": [
+								"pages",
+								":ID"
+							],
+							"variable": [
+								{
+									"key": "ID",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

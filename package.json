@@ -1,0 +1,29 @@
+{
+  "name": "vcomply",
+  "version": "1.0.0",
+  "description": "registration of the application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger-autogen": "node swagger.js"
+  },
+  "author": "CriticalRiver",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.19.0",
+    "crypto-js": "^4.0.0",
+    "express": "^4.17.1",
+    "form-data": "^4.0.0",
+    "ip": "^1.1.8",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.3.0",
+    "moment": "^2.29.4",
+    "mongoose": "^5.12.11",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.4.0"
+  }
+}

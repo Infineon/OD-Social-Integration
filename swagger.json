@@ -1,0 +1,684 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "Online Documentation: social features",
+      "description": "Online Documentation API"
+    },
+    "host": "localhost:3600",
+    "basePath": "/api/v1",
+    "securityDefinitions": {
+        "JWT" : {
+           "type": "apiKey",
+           "name": "Authorization",
+           "in": "header"
+         }
+    },
+       "paths": {
+        "/verifyReraNumber":{
+        "get" : {
+            "summary" : "Verify Rera Mobile Number",
+            "tags": ["User Authentication"],
+            "description": "Verify Rera Mobile Number",
+            "produces": ["application/json"],
+            "parameters": [
+                {
+                    "name": "MobileNumber",
+                    "in": "query",
+                    "description": "RERA Mobile Number",
+                    "required": true,
+                    "type": "string",
+		    "value": "9876543210"
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success"
+                },
+                "401": {
+                    "description": "Mobile Number Not Found"
+                }
+            }
+        }
+      },
+      "/verifyAuthCode" : {
+        "post" : {
+            "tags": ["User Authentication"],
+            "summary" : "Verify Authentication Code",
+            "description": "Verify Authentication Code",
+            "produces": ["application/json"],
+            "consumes": ["application/json"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "body",
+                    "description": "RERA Number and Auth Code",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "$ref": "#/definitions/User"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success",
+                    "schema": {
+                        "type": "object"
+                    }
+                },
+                "400": {
+                    "description": "Invalid data"
+                }
+            }
+        }
+    },
+      "/updateUserInterests" : {
+        "post" : {
+            "tags": ["User Authentication"],
+            "summary" : "Update User Interests",
+            "description": "Update User Interests",
+            "produces": ["application/json"],
+            "consumes": ["application/json"],
+            "parameters": [
+                {
+                  "name": "accessId",
+                  "in": "query",
+                  "description": "Access Id",
+                  "required": true,
+                  "type": "string",
+		  "value": "62b0db33deffa10c14aaf576"
+              },
+	      {
+                    "in": "body",
+                    "name": "body",
+                    "description": "Update User Interests",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "$ref": "#/definitions/UserInterests"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Success",
+                    "schema": {
+                        "type": "object"
+                    }
+                },
+                "400": {
+                    "description": "Invalid data"
+                }
+            }
+        }
+    },
+    "/updatePersonalInfo" : {
+      "post" : {
+          "tags": ["Users"],
+          "summary" : "Update User Personal Info",
+          "description": "Update User Personal Info",
+          "produces": ["application/json"],
+          "consumes": ["application/json"],
+          "parameters": [
+              {
+                "name": "accessId",
+                "in": "query",
+                "description": "Access Id",
+                "required": true,
+                "type": "string",
+                "value": "62b0db33deffa10c14aaf576"
+            },
+      {
+                  "in": "body",
+                  "name": "body",
+                  "description": "Update User Personal Info",
+                  "required": true
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "schema": {
+                      "type": "object"
+                  }
+              },
+              "400": {
+                  "description": "Invalid data"
+              }
+          }
+      }
+  },
+    "/userProperties":{
+      "get" : {
+          "summary" : "Get the Properties of the User",
+          "tags": ["Properties"],
+          "description": "Get the Properties of the User",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+              {
+                  "name": "accessId",
+                  "in": "query",
+                  "description": "Access Id",
+                  "required": true,
+                  "type": "string",
+		  "value": "62b0db33deffa10c14aaf576"
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "type": "array",
+                  "$ref": "#/definitions/Property"
+              },
+              "401": {
+                  "description": "Properties Not Found"
+              }
+          }
+      }
+    },
+    "/interests":{
+      "get" : {
+          "summary" : "Get the Interest Types",
+          "tags": ["Master"],
+          "description": "Get the Interests Types",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "type": "array",
+                  "$ref": "#/definitions/Interests"
+              },
+              "401": {
+                  "description": "Interests Not Found"
+              }
+          }
+      }
+    },
+    "/subscriptions":{
+      "get" : {
+          "summary" : "Get the Subscriptions",
+          "tags": ["Master"],
+          "description": "Get the Subscriptions",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "type": "array",
+                  "$ref": "#/definitions/Subscriptions"
+              },
+              "401": {
+                  "description": "Subscriptions Not Found"
+              }
+          }
+      }
+    },
+    "/maintenanceRequest":{
+      "get" : {
+          "summary" : "Get the Maintenance Requests",
+          "tags": ["Master"],
+          "description": "Get the Maintenance Requests",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "type": "array",
+                  "$ref": "#/definitions/maintenanceRequest"
+              },
+              "401": {
+                  "description": "Maintenance Requests Not Found"
+              }
+          }
+      }
+    },"/userMaintenanceRequests": {
+      "get": {
+             "tags": ["Users"],
+             "summary": "Get User Maintenance Requests",
+             "description": "Get User Maintenance Requests",
+             "consumes": ["application/json"],
+	     "security": [{
+		    "JWT": []
+	     }],
+             "parameters": [
+                 {
+                   "name": "accessId",
+                   "in": "query",
+                   "description": "Access Id",
+                   "required": true,
+                   "type": "string",
+		               "value": "62b0db33deffa10c14aaf576"               
+                 },
+                 {
+                   "name": "propertyId",
+                   "in": "query",
+                   "description": "Property Id",
+                   "required": true,
+                   "type": "string",
+		               "value": "62b0d9b3deffa10c14aaf570"               
+                 }          
+          ],
+          "responses": {
+              "200": {
+                "description": "Success",
+                "type": "array",
+                "$ref": "#/definitions/userMaintenanceRequest"
+              },
+              "401": {
+                  "description": "User Maintenance Requests not found"
+              }
+          }
+      }
+    },
+    "/advertisements":{
+      "get" : {
+          "summary" : "Get the Advertisements List",
+          "tags": ["Master"],
+          "description": "Get the Advertisements List",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "type": "array",
+                  "$ref": "#/definitions/advertisements"
+              },
+              "401": {
+                  "description": "Advertisements Requests Not Found"
+              }
+          }
+      }
+    },
+    "/termsConditions":{
+      "get" : {
+          "summary" : "Get the Terms & Conditions information",
+          "tags": ["Master"],
+          "description": "Get the Terms & Conditions information",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "type": "array",
+                  "$ref": "#/definitions/Content"
+              },
+              "401": {
+                  "description": "Data Not Found"
+              }
+          }
+      }
+    },
+    "/occupants": {
+      "get": {
+          "summary": "Get the Occupants",
+          "tags": ["Occupants"],
+          "description": "Get the Occupants",
+          "produces": ["application/json"],
+          "security": [{
+            "JWT": []
+          }],
+          "parameters": [
+              {
+                  "name": "accessID",
+                  "in": "query",
+                  "description": "Access Id",
+                  "required": true,
+                  "type": "string"
+              },
+              {
+                  "name": "propertyId",
+                  "in": "query",
+                  "description": "Property Id",
+                  "required" : true,
+                  "type": "string"  
+              }
+          ],
+          "responses": {
+              "200": {
+                "description": "Success",
+                "type": "array",
+                "$ref": "#/definitions/Occupants"
+              },
+              "401": {
+                  "description": "Occupants Not Found"
+              }
+          }
+      }
+    },
+    "/updateOccupant": {
+      "post": {
+          "summary": "Update the Occupant details",
+          "tags": ["Occupants"],
+          "description": "Update the Occupant details",
+          "produces": ["application/json"],
+          "security": [{
+            "JWT": []
+          }],
+          "parameters": [
+              {
+                  "name": "occupantId",
+                  "in": "query",
+                  "description": "Occupant Id",
+                  "required": true,
+                  "type": "string"
+              },
+              {
+                "in": "body",
+                "name": "body",
+                "description": "Update Occupant details",
+                "required": true
+            }
+          ],
+          "responses": {
+              "200": {
+                "description": "Success",
+                "type": "array",
+                "$ref": "#/definitions/Occupants"
+              },
+              "401": {
+                  "description": "Occupants Not Found"
+              }
+          }
+      }
+    },
+    "/deleteUserOccupants": {
+      "delete": {
+             "tags": ["Occupants"],
+             "summary": "Delete User Occupants",
+             "description": "Delete User Occupants",
+             "consumes": ["application/json"],
+	     "security": [{
+		    "JWT": []
+	     }],
+             "parameters": [
+                 {
+                   "name": "accessId",
+                   "in": "query",
+                   "description": "Access Id",
+                   "required": true,
+                   "type": "string",
+		   "value": "62b0db33deffa10c14aaf576"               
+                 },
+                 {
+                   "name": "propertyId",
+                   "in": "query",
+                   "description": "Property Id",
+                   "required": true,
+                   "type": "string",
+		   "value": "62b0d9b3deffa10c14aaf570"               
+                 },
+                 {
+                  "name": "occupantId",
+                  "in": "query",
+                  "description": "Occupant Id",
+                  "required": true,
+                  "type": "string",
+		  "value": "62b0dededeffa10c14aaf57f"               
+                }           
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success",
+                  "schema": {
+                      "type": "object"
+                  }
+              },
+              "400": {
+                  "description": "Invalid data"
+              }
+          }
+      }
+    },
+    "/superTenantDashboard":{
+      "get" : {
+          "summary" : "Get the dashboard Data of Super Tenant",
+          "tags": ["Dashboard"],
+          "description": "Get the dashboard Data of Super Tenant",
+          "produces": ["application/json"],
+          "security":[{
+            "JWT": []
+           }],
+          "parameters": [
+              {
+                  "name": "accessId",
+                  "in": "query",
+                  "description": "Access Id",
+                  "required": true,
+                  "type": "string",
+		              "value": "62b0db33deffa10c14aaf576"
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "Success"
+              },
+              "401": {
+                  "description": "User Not Found"
+              }
+          }
+      }
+    }
+    },
+    "definitions": {
+      "User": {
+        "required": [
+          "reraContactNumber",
+          "authCode"
+        ],
+        "properties": {
+          "reraContactNumber": {
+            "type": "string",
+	    "example": "9879879871"
+          },
+          "authCode": {
+            "type": "string",
+	    "example": "1111"
+          }
+         
+        }
+      },
+      "UserInterests": {
+        "required": [
+          "interests"
+        ],
+        "properties": {
+          "interests": {
+            "type": "array",
+	    "example": "[1,4]"
+          }         
+        }
+      },
+      "Property" :{
+        "properties": {
+          "_id": {
+            "type": "string" 
+          },
+          "propertyId": { 
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+           },
+          "address": {
+             "type": "string"
+            }
+        }
+      },
+      "Interests" :{
+        "properties": {
+          "_id": {
+            "type": "number" 
+          },
+          "name": {
+            "type": "string"
+           }
+        }
+      },
+      "Subscriptions" :{
+        "properties": {
+          "_id": {
+            "type": "string" 
+          },
+          "description": {
+            "type": "string"
+           },
+          "planName": {
+            "type": "string"
+           },
+          "price": {
+            "type": "number"
+           }
+        }
+      },
+      "maintenanceRequest" :{
+        "properties": {
+          "_id": {
+            "type": "string" 
+          },
+          "name": {
+            "type": "string"
+           },
+          "icon": {
+            "type": "string"
+           }
+        }
+      },
+      "userMaintenanceRequest" :{
+        "properties": {
+          "maintenanceRequestTypeId": { 
+            "type":"string"
+          },
+          "userId": {
+            "type":"string"
+          },
+          "propertyId": { "type": "string"},
+          "visitDate": { "type": "string"},
+          "visitTime": { "type": "string"},
+          "comments": { "type": "string"},
+          "photos": { "type": "array"},
+          "audioMessage": { "type": "string"},
+          "status": { "type": "string"},
+          "inspectionUserId": { "type": "string"},
+          "inspectionDateTime": { "type": "string"}
+        }
+      },
+      "advertisements" :{
+        "properties": {
+          "_id": {
+            "type": "string" 
+          },
+          "banner": {
+            "type": "string"
+           },
+          "url": {
+            "type": "string"
+           }
+        }
+      },
+      "Content" :{
+        "content": {
+          "_id": {
+            "type": "number" 
+          },
+          "contentType": {
+            "type": "string"
+           },
+          "content": {
+            "type": "string"
+           }
+        }
+      },
+      "Occupants" :{
+        "properties": {
+          "_id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "contactNumber": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "emiratesId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "propertyId": {
+            "type": "string"
+          },
+          "status":{
+            "type": "string"
+          },
+          "requestMaintenance":{
+            "type": "number"
+          },
+          "availCommunityService":{
+            "type": "number"
+          }
+        }
+      },
+      "Dashboard": {
+        "required": [
+          "accessId"
+        ],
+        "properties": {
+          "profile": {
+            "type": "Object"
+          },
+          "property": {
+            "type": "array"
+          },
+          "payment":{
+            "type" : "object"
+          },
+          "notifications":{
+            "type" : "object"
+          },
+          "maintenanceRequests":{
+            "type" : "object"
+          },
+          "advertisements":{
+            "type" : "object"
+          }
+         
+        }
+      }
+    },
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+    
+  }
