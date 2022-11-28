@@ -38,6 +38,7 @@ CREATE TABLE `page-message-user` (
   CONSTRAINT `fkuser` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+//NOTE - Added socialIds for messagers and users to map iDs with corrospoinding Khoros iDs
 ALTER TABLE `onlinedocumentation-social`.`messages` 
 ADD COLUMN `messagesocialid` INT NOT NULL AFTER `messageid`,
 CHANGE COLUMN `messagedate` `messagedate` DATETIME NOT NULL ;
