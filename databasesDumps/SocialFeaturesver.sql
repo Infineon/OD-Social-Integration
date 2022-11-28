@@ -37,3 +37,10 @@ CREATE TABLE `page-message-user` (
   CONSTRAINT `fkpage` FOREIGN KEY (`pageid`) REFERENCES `page` (`pageid`),
   CONSTRAINT `fkuser` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ALTER TABLE `onlinedocumentation-social`.`messages` 
+ADD COLUMN `messagesocialid` INT NOT NULL AFTER `messageid`,
+CHANGE COLUMN `messagedate` `messagedate` DATETIME NOT NULL ;
+
+ALTER TABLE `onlinedocumentation-social`.`user` 
+ADD COLUMN `usersocialid` INT NOT NULL AFTER `userid` ;
