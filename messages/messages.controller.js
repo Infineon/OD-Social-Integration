@@ -13,3 +13,41 @@
  const logger = log4js.getLogger("messagesController");
  const axios = require('axios').default;
  const authService = require('../services/auth.service');
+ const messages = require('./model/messages.model');
+ const pagemessageuser = require('./model/page-message-user.model');
+ const mySQLDB = require('../services/mysql.service');
+ 
+
+ //fetchmessagesByID
+ exports.fetchmessagesByID = (req) => {
+    try {
+        const pageid = req.pageid
+        //console.log("Entered Controller");
+        pagemessageuser.findAll({
+            where: {
+                pageid: {
+                [Op.eq]: pageid
+              }
+            }
+          });
+
+        return new Promise(function(resolve, reject) {
+            interestTypes.find(req)
+                .sort({
+                    _id: 1
+                })
+                .then(function(response) {
+                    if (!response) {
+                        reject('Interests Not found');
+                    } else {
+                        resolve(response);
+                    }
+
+                });
+        });
+    } catch (err) {
+        logger.error('Error', err);
+        reject(err);
+    }
+
+};

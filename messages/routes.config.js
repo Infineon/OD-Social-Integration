@@ -11,7 +11,7 @@ exports.routesConfig = function(Messagesapp) {
         messagesHandler.fetchMessages
     ]);
     Messagesapp.get('/api/v1/messages/:ID', authService.authUser, [
-        messagesHandler.fetchMessagesByID
+        messagesHandler.messagesByID
     ]);
 
 	Messagesapp.post('/api/v1/messages/', authService.authUser, [
