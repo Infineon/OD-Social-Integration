@@ -7,67 +7,51 @@
  *  </npm>
  * </summary>
  */
- const config = require('../config.js');
+ const db = require("../services/mysql.service");
+const Pagemessages = db.pagemessages;
+const Op = db.Sequelize.Op;
 
- const log4js = require('log4js');
- const logger = log4js.getLogger("messagesController");
- const axios = require('axios').default;
- const authService = require('../services/auth.service');
-//  const messages = require('./model/messages.model');
- const  pagemessageuser = require('./model/page-message-user.model');
-//  const mySQLDB = require('../services/mysql.service');
- const {Op} =require('sequelize')
-
- //fetchmessagesByID
- exports.fetchmessagesByID = (req, res) => {
-    try {
-        
-        const pageid = 1;
-        //console.log("Entered Controller");
-        const pmus = pagemessageuser.findAll({
-            where: {
-                pageid: {
-                [Op.eq]: pageid
-              }
-            }
-          }); 
-        // const pmus = pagemessageuser.findAll({
-        //   where: {
-        //       pageid: {
-        //       [Op.eq]: pageid
-        //     }
-        //   }
-        // }); 
-        return pmus;
-
-      //  return pagemessageuser.findAll({
-      //       where: {
-      //           pageid: {
-      //           [Op.eq]: pageid
-      //         }
-      //       }
-      //     });
-
-
-
-        // return new Promise(function(resolve, reject) {
-        //     interestTypes.find(req)
-        //         .sort({
-        //             _id: 1
-        //         })
-        //         .then(function(response) {
-        //             if (!response) {
-        //                 reject('Interests Not found');
-        //             } else {
-        //                 resolve(response);
-        //             }
-
-        //         });
-        // });
-    } catch (err) {
-        return err  
-      //logger.error('Error', err);
-        //reject(err);
-    }
-
+// Create and Save a new Tutorial
+exports.fetchmessagesByID = (req, res) => {
+  Pagemessages.findAll({ where: {pageid:1} })
+  .then(data => {
+    res.send(data);
+  })
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving tutorials."
+    });
+  });
+  
 };
+
+// // Retrieve all Tutorials from the database.
+// exports.findAll = (req, res) => {
+  
+// };
+
+// // Find a single Tutorial with an id
+// exports.findOne = (req, res) => {
+  
+// };
+
+// // Update a Tutorial by the id in the request
+// exports.update = (req, res) => {
+  
+// };
+
+// // Delete a Tutorial with the specified id in the request
+// exports.delete = (req, res) => {
+  
+// };
+
+// // Delete all Tutorials from the database.
+// exports.deleteAll = (req, res) => {
+  
+// };
+
+// // Find all published Tutorials
+// exports.findAllPublished = (req, res) => {
+  
+// };
