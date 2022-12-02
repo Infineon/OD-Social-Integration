@@ -10,13 +10,17 @@ exports.routesConfig = function(Messagesapp) {
     Messagesapp.get('/api/v1/messages',  [
         messagesHandler.fetchMessages
     ]);
-    Messagesapp.get('/api/v1/messages/:ID', authService.authUser, [
-        messagesHandler.messagesByID
+    Messagesapp.get('/api/v1/messages/:ID',  [
+        messagesHandler.fetchMessagesByID
     ]);
 
-	Messagesapp.post('/api/v1/messages/', authService.authUser, [
-        messagesHandler.createMessage
-    ]);
+    // // Messagesapp.get('/api/v1/messages/:ID', authService.authUser, [
+    // //     messagesHandler.fetchMessagesByID
+    // // ]);
+
+	// Messagesapp.post('/api/v1/messages/', authService.authUser, [
+    //     messagesHandler.createMessage
+    // ]);
 
 };
 

@@ -32,29 +32,20 @@ const messagesService = require('./messages.controller');
  * @param {any} res 
  * @return {Returns Messages data or Failed }
  */
- exports.messagesByID = (req, res) => {
+ exports.fetchMessagesByID = (req, res) => {
+
 //TODO - Validate ID
 try {
-    messagesService.fetchmessagesByID(req.body)
-        .then(function(messages) {
+    const response = messagesService.fetchmessagesByID(req, res);
+        
             res.status(200)
                 .send({
                     status: true,
                     message: 'Success',
                     code: 200,
-                    data: messages
+                    data: response
                 })
-        })
-        .catch(function(err) {
-            logger.error("Message Handler", err);
-            res.status(403)
-                .send({
-                    status: false,
-                    message: 'Messages Not Found',
-                    code: 403,
-                    data: {}
-                })
-        });
+        ;
 } catch (e) {
     logger.warn("Message Handler :", e.message);
     res.status(200)

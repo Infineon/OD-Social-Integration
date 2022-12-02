@@ -5,7 +5,7 @@
  * A Message master model used to define the schema with mySQL services 
  * </summary>
  */
-module.express = (sequelize, Sequelize) => {
+module.exports = (sequelize, Sequelize) => {
     const messages = sequelize.define("messages", {
         messagesocialid: {
         type: Sequelize.INTEGER
