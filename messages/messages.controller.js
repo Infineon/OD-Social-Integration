@@ -13,6 +13,7 @@ const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
 exports.fetchmessagesByID = (req, res) => {
+  
   Pagemessages.findAll({ where: {pageid:1} })
   .then(data => {
     res.send(data);
