@@ -1,4 +1,4 @@
-const config = require('./config.js');
+const config = require('./src/config/config');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -6,10 +6,7 @@ const log4js = require('log4js');
 const path = require("path");
 const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
-//const swaggerSpec = swaggerJSDoc(options);
-const usersRouter = require('./users/routes.config');
-const pagesRouter = require('./pages/routes.config');
-const messagesRouter = require('./messages/routes.config');
+const routes = require('./src/routes/routes')
 //const notificationRouter = require('./notifications/routes.config');
 //const communityProperties = require('./sandbox/communityProperties/routes.config')
 /**
@@ -28,6 +25,14 @@ const loggerDetails = (function() {
         }
     }
 })();
+const db = require("./src/models/index");
+db.sequelize.sync()
+  .then(() => {
+    console.log("Synced db.");
+  })
+  .catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+  });
 
 var customSwaggerOptions = {
     explorer: true,
@@ -106,9 +111,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 
-usersRouter.routesConfig(app);
-pagesRouter.routesConfig(app);
-messagesRouter.routesConfig(app);
+app.use('/api/v1',routes);
 
 app.listen(config.port, function() {
     logger.info('app listening at port ' + config.ipaddress + ':%s', config.port);

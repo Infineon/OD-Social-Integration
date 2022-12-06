@@ -2,7 +2,36 @@ CREATE DATABASE `onlinedocumentation-social`
 /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ 
 /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `onlinedocumentation-social` ;
+UPDATE `onlinedocumentation-social`.`messages`
+SET
+`messageid` = <{messageid: }>,
+`messagesocialid` = <{messagesocialid: }>,
+`messagetext` = <{messagetext: }>,
+`messagedate` = <{messagedate: }>
+WHERE `messageid` = <{expr}>;
 
+UPDATE `onlinedocumentation-social`.`page`
+SET
+`pageid` = <{pageid: }>,
+`pageurl` = <{pageurl: }>,
+`pagecol` = <{pagecol: }>
+WHERE `pageid` = <{expr}>;
+
+UPDATE `onlinedocumentation-social`.`page-message-user`
+SET
+`page-message-userid` = <{page-message-userid: }>,
+`pageid` = <{pageid: }>,
+`messgeid` = <{messgeid: }>,
+`userid` = <{userid: }>
+WHERE `page-message-userid` = <{expr}>;
+
+UPDATE `onlinedocumentation-social`.`user`
+SET
+`userid` = <{userid: }>,
+`useremail` = <{useremail: }>,
+`username` = <{username: }>,
+`usersocialid` = <{usersocialid: }>
+WHERE `userid` = <{expr}>;
 CREATE TABLE `messages` (
   `messageid` int NOT NULL AUTO_INCREMENT,
   `messagesocialid` int NOT NULL,

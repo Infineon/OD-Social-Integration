@@ -1,12 +1,12 @@
 /*
  * FileName @messages.model
- * author @CriticalRiver
+ * author @sudhakar
  * <summary>
  * A page-message-user model used to define the schema with mySQL services 
  * </summary>
  */
 const { Sequelize, DataTypes,Model } = require('sequelize');
-const dbConfig = require('../../config/db.config')
+const dbConfig = require('../config/db.config')
 // const sequelize = new Sequelize('sqlite::memory:');
 const sequelize = new Sequelize( dbConfig.HOST , dbConfig.USER,
     dbConfig.PASSWORD, {

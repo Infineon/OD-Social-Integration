@@ -14,11 +14,11 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   }
 });
 
-const db = {};
+var db = {};
 
-db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
-db.pagemessages = require("../messages/model/page-message-user.model1.js")(sequelize, Sequelize);
+db.Sequelize = Sequelize;
 
 module.exports = db;
+
+db.messages = require("./messages.model");

@@ -1,5 +1,5 @@
 /** FileName @pages.controller
- * author @CriticalRiver
+ * author @sudhakar
  * <summary>
  *  DAO for performing Database related operation in DB for page schema
  *  <npm>
